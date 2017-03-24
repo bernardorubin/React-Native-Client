@@ -1,21 +1,24 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-
+import QuestionsListing from './components/questions-listing';
+import QuestionDetails from './components/question-details';
 import {
   createRouter,
   NavigationProvider,
   StackNavigation,
 } from '@expo/ex-navigation';
 
+const Router = createRouter(() => ({
+  home: () => QuestionsListing,
+  question: () => QuestionDetails
+}));
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+      <NavigationProvider router={Router}>
+        <StackNavigation initialRoute="home" />
+      </NavigationProvider>
     );
   }
 }
