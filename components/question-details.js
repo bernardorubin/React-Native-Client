@@ -11,7 +11,7 @@ export default class QuestionDetails extends React.Component {
 
   render() {
     return <View>
-            <Text>Details about one Question</Text>
+            <Text>Details about one Question {this.props.questionId}</Text>
            </View>;
   }
 }
